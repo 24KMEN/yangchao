@@ -1,0 +1,11 @@
+table{
+    width:100% !important;
+}
+.bjui-datagrid{
+    height:100% !important;
+    margin-right:10px;
+}
+.bjui-datagrid .bjui-paging-box{
+    position: absolute;
+    bottom:0px;
+}

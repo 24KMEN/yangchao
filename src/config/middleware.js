@@ -33,7 +33,10 @@ module.exports = [
   },
   {
     handle: 'router',
-    options: {}
+    options: {
+      defaultController: 'admin/index',
+      defaultAction: 'index'
+    }
   },
   'logic',
   'controller'

@@ -11,6 +11,16 @@
         "runtimeExecutable": "node",
         "autoAttachChildProcesses": true,
         "runtimeArgs": ["--inspect", "development.js"]
-      }
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "yangchao",
+        "program": "${workspaceRoot}/development.js",
+        "cwd": "${workspaceRoot}",
+        "args": [
+          "--inspect",
+        ]
+    },
     ]
   }

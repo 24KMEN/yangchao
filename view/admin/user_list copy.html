@@ -6,7 +6,7 @@
                 gridTitle : '',
                 showToolbar: true,
                 toolbarItem: 'add,edit,del,|,import,export,exportf',
-                dataUrl: 'http://b-jui.com/demo?callback=?',
+                dataUrl: '/admin/user/listData',
                 dataType: 'jsonp',
                 jsonPrefix: 'obj',
                 editMode: {dialog:{width:'800',height:500,title:'编辑挂号信息',mask:true}},
@@ -14,8 +14,6 @@
                 paging: {pageSize:60},
                 showCheckboxcol: true,
                 linenumberAll: true,
-                importOption: {type:'dialog', options:{url:'../../html/datagrid/datagrid-import.html', width:500, height:300, title:'导入挂号信息'}},
-                exportOption: {type:'file', options:{url:'http://b-jui.com/demo/export', loadingmask:true}}
             }">
                 <thead>
                     <tr>
@@ -30,7 +28,7 @@
                         <th data-options="{name:'regdate',align:'center',type:'date',pattern:'yyyy-MM-dd HH:mm',render:function(value){return value?value.substr(0,16):value}}">挂号日期</th>
                         <th data-options="{name:'order',align:'center',width:50}">当日序号</th>
                         <th data-options="{name:'regname'}">挂号类别</th>
-                        <th data-options="{name:'deptcode',type:'select',items:function(){return $.getJSON('http://b-jui.com/demo/listDepart?callback=?')},itemattr:{value:'deptcode',label:'deptname'}}">科室</th>
+                        <th data-options="{name:'deptcode',type:'select',items:function(){return $.getJSON('')},itemattr:{value:'deptcode',label:'deptname'}}">科室</th>
                         <th data-options="{name:'regfee',align:'center',width:60}">挂号费</th>
                         <th data-options="{name:'name',align:'center',width:70}">姓名</th>
                         <th data-options="{name:'sex',align:'center',width:45,type:'select',items:[{'true':'男'},{'false':'女'}]}">性别</th>

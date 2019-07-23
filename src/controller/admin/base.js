@@ -1,5 +1,8 @@
 module.exports = class extends think.Controller {
-  __before() {
-
+  async __before() {
+    let admin = await this.session('admin');
+    if(!admin){
+      return this.redirect('/admin/login');
+    }
   }
 };
