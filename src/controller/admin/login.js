@@ -11,20 +11,19 @@ module.exports = class extends think.Controller {
   // 登录
   async loginAction(){
     if(this.isPost) {
-      let name = this.post('name');
+      let username = this.post('username');
       let pwd = this.post('pwd');
-      if(name && pwd){
+      let group_id = 0;
+      if(username && pwd){
         pwd = think.md5(pwd);
         let model = this.model('admin/admin');
-        let result = await model.where({name,pwd}).find();
+        let result = await model.where({username,pwd,group_id}).field('id,group_id,nickname').find();
         if(JSON.stringify(result) == "{}"){
-          await this.fail(-1,'登录失败');
+          return this.fail(-1,'登录失败');
           // return this.redirect('/admin/login');
         }else{
-          await this.session('admin',result.id);
-          await this.session('name',result.name);
-          // await this.success({errno:0,errmsg:'登录成功'});
-          return this.redirect('/');
+          await this.session('admin',result);
+          return this.redirect('/admin/user/list');
         }
       }
     }

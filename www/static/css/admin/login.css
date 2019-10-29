@@ -1,3 +1,16 @@
+@media (min-width: 768px) {
+  .main_box {margin-left:-240px; padding:15px 55px; width:480px;}
+  .main_box .logo img{height:40px;}
+}
+
+.login_msg{height:30px;}
+.layui-form-item .layui-input-block{
+  margin-left:0px;
+}
+.layui-form-item label{
+  display: block;
+  padding:10px 0;
+}
 body, html {
     margin: 0;
     padding: 0;
@@ -5,27 +18,44 @@ body, html {
   }
   body {
     font: 17px/1.5 "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
-    background: rgb(93, 174, 240);
+    background: #5daef0;
     margin: 0;
     color: #33333d;
     overflow-y: scroll;
     overflow-x: hidden;
   }
-  .content > h1{
+  .container > h1{
+    color:white;
     text-align: center;
     margin:100px 0 50px 0;
   }
-  .content .login{
-    width:500px;
-    height:390px;
+  .container .main_box{
+    /* position: none; */
+    width:450px;
+    height:400px;
     background-color: white;
     margin:auto;
     padding:10px 40px;
     border-radius: 20px;
   }
-  .content .login h2{
+  .container .main_box h2{
+    margin-top:20px;
     text-align: center;
   }
-  .content .login button{
+  .container .main_box input{
+    border-radius:5px;
+    height:45px;
+  }
+  .container .main_box button{
+    border-radius:5px;
     margin-top:40px;
+  }
+  .toggle{
+    color:white;
+    width:500px;
+    margin:20px auto;
+    text-align: right;
+  }
+  .toggle > a{
+    color: white;
   }

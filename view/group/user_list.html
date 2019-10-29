@@ -1,0 +1,38 @@
+<table id="userList" class="table table-bordered" data-toggle="datagrid">
+    <thead>
+        <tr>
+            <th data-options="{name:'username',align:'center',width:70}">账号</th>
+            <th data-options="{name:'nickname',align:'center',width:70}">昵称</th>
+            <th data-options="{name:'phone',align:'center',width:140}">电话</th>
+            <th data-options="{name:'IDcard',align:'center',width:300,edit:false}">身份证</th>
+            <th data-options="{name:'join_time',align:'center',edit:false}">入住时间</th>
+            <th data-options="{name:'money',align:'center',width:70,edit:false,quickfilter:false}">余额</th>
+            <th data-options="{name:'socre',align:'center',width:70,edit:false,quickfilter:false}">积分</th>
+            <th data-options="{render:custom,align:'center'}">操作</th>
+            <!-- <th data-options="{name:'createtime',align:'center',type:'date',pattern:'yyyy-MM-dd HH:mm:ss'}">创建时间</th> -->
+        </tr>
+    </thead>
+</table>
+
+<script type="text/javascript">
+    $('#userList').datagrid({
+        dataUrl: '/group/user/list',
+        height: '100%',
+        // tableWidth:'100%',
+        showToolbar: false,
+        paging: {pageSize:50, pageCurrent:1},
+        linenumberAll:true, // 全局行号
+        // showEditbtnscol:'操作', // 编辑按钮
+        // customEditbtns:{position:'before',buttons:recharge,width:0},
+        editUrl:'/group/user/edit',
+        editType:'raw',
+        delUrl:'/group/user/edit',
+        // editMode:{dialog:{width:'600',height:'500',title:'编辑挂号信息',mask:true}},
+        editMode:'dialog',
+    });
+    function custom(value,data){
+        dataJson = JSON.stringify(data).replace(/\"/g,"'");
+        var html = `<button class="btn btn-green bjui-datagrid-btn" data-toggle="dialog" data-options="{id:'recharge',titile:'充值',type:'POST',data:${dataJson},url:'group/user/recharge',mask:true}" ><i class="fa fa-edit"></i> 消费</button>`
+        return html
+    };
+</script>

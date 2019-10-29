@@ -1,41 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<!-- bootstrap - css -->
-<link href="/static/B-JUI/themes/css/bootstrap.css" rel="stylesheet">
-<!-- jquery -->
-<script src="/static/B-JUI/js/jquery-1.11.3.min.js"></script>
-<script src="/static/B-JUI/js/jquery.cookie.js"></script>
-<!-- bootstrap plugins -->
-<script src="/static/B-JUI/plugins/bootstrap.min.js"></script>
-<title>{{ title }}</title>
-<link rel="stylesheet" href="/static/css/admin/login.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>系统登录</title>
+<meta name="renderer" content="webkit">
+<!-- css、js -->
+<link href="/static/css/layui.css" rel="stylesheet">
+<script src="/static/layui.js"></script>
+<link href="/static/css/admin/login.css" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>{{ name.name }}</h1>
+<div class="layui-container container">
+  <h1>养超管理系统V1.0</h1>
+    <div class="main_box">
+        <form action="/admin/login/login" class="layui-form" id="login_form" method="post">
+            <div class="form-group">
+                <h2>平台登录</h2>
+            </div>
+            <div class="layui-form-item">
+                <label for="username">账号</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="j_username" name="username" value="" placeholder="登录账号" aria-describedby="sizing-addon-user">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label for="name">密码</label>
+                <div class="layui-input-block">
+                    <span class="input-group-addon" id="sizing-addon-password"><span class="glyphicon glyphicon-lock"></span></span>
+                    <input type="password" class="layui-input" class="form-control" id="j_password" name="pwd" placeholder="登录密码" aria-describedby="sizing-addon-password">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button type="submit" id="login_ok" class="layui-btn layui-btn-fluid layui-btn-lg layui-btn-normal">&nbsp;登&nbsp;录&nbsp;</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+            <div class="login_msg text-center"><font color="red"></font></div>
+        </form>
     </div>
-  </header>
-  <div class="content">
-    <h1>养超管理系统V1.0</h1>
-    <div class="login container">
-      <div class="form-group">
-          <h2>平台登录</h2>
-      </div>
-      <form method="POST" action="/admin/login/login">
-        <div class="form-group form-group-lg">
-          <label for="name">账号</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="账号">
-        </div>
-        <div class="form-group form-group-lg">
-          <label for="pwd">密码</label>
-          <input type="password" class="form-control" id="pwd" name="pwd" placeholder="密码">
-        </div>
-        <button type="submit" class="btn btn-success btn-lg btn-block">登录</button>
-      </form>
+    <div class="toggle">
+        <a href="/group/login">切换到平台端登录</a>
     </div>
-  </div>
+</div>
 </body>
 </html>

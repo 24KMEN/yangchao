@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+<!-- head -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{{ title }}</title>
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
+    <!-- css、js -->
+    <link href="/static/css/layui.css" rel="stylesheet">
+    <script src="/static/layui.js"></script>
+</head>
+
+<body style="margin:0 auto;width:80%;height:400px;padding-top:20px;">
+    <form class="layui-form">
+        <div class="layui-form-item">
+                <label class="layui-form-label">ID</label>
+                <div class="layui-input-block">
+                    <div class="layui-form-mid">{{data.id}}</div>
+                    <input type="text" name="id" value="{{data.id}}" autocomplete="off" class="layui-input layui-hide">
+                </div>
+            </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+                <div class="layui-form-mid">{{data.username}}</div>
+                <!-- <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input"> -->
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">昵称</label>
+            <div class="layui-input-block">
+                <input type="text" name="nickname" required lay-verify="required" value="{{data.nickname}}" autocomplete="off" class="layui-input">
+            </div>
+            <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">电话</label>
+            <div class="layui-input-block">
+                <!-- <span>{{data.phone}}</span> -->
+                <div class="layui-form-mid">{{data.phone}}</div>
+            </div>
+            <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">身份证</label>
+            <div class="layui-input-block">
+                <div class="layui-form-mid">{{data.IDcard}}</div>
+            </div>
+            <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">余额</label>
+            <div class="layui-input-block">
+                <div class="layui-form-mid">{{data.money}}</div>
+            </div>
+            <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">积分</label>
+            <div class="layui-input-block">
+                <div class="layui-form-mid">{{data.score}}</div>
+            </div>
+            <!-- <div class="layui-form-mid layui-word-aux">辅助文字</div> -->
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+
+</body>
+<script>
+    layui.use('form', function () {
+        var $ = layui.jquery;
+        var form = layui.form;
+
+        //监听提交
+        form.on('submit(formDemo)', function (data) {
+            // layer.msg(JSON.stringify(data.field));
+            $.ajax({
+                type: "POST",
+                // dataType: "html",
+                url: '/admin/user/edit',
+                data: data.field,
+                success: function (result) {
+                    if(result.errno == 0){
+                        var index = parent.layer.getFrameIndex(window.name);
+                        parent.layer.close(index);
+                        parent.layui.table.reload('userList');
+                    }
+                    parent.layer.msg(result.errmsg);
+                },
+                error: function() {
+                    layer.msg('未知错误！');
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+</html>

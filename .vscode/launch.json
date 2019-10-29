@@ -13,14 +13,16 @@
         "runtimeArgs": ["--inspect", "development.js"]
       },
       {
+        // "port": 9229,
+        "restart":true,
         "type": "node",
         "request": "launch",
         "name": "yangchao",
         "program": "${workspaceRoot}/development.js",
         "cwd": "${workspaceRoot}",
-        "args": [
-          "--inspect",
-        ]
+        // "args": [
+        //   "--inspect",
+        // ]
     },
     ]
   }

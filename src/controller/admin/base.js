@@ -3,6 +3,8 @@ module.exports = class extends think.Controller {
     let admin = await this.session('admin');
     if(!admin){
       return this.redirect('/admin/login');
+    }else{
+      this.assign('nickname', admin.nickname); // 给模板赋值
     }
   }
 };
